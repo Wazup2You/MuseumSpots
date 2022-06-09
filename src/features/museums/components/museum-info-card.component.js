@@ -1,9 +1,23 @@
 import React from "react";
+import styled from "styled-components";
 import { Text, StyleSheet } from "react-native";
 import { Card } from "react-native-paper";
-import { styleProps } from "react-native-web/dist/cjs/modules/forwardedProps";
 
-export const MuseumInfo = ({ museum = {} }) => {
+const MuseumCard = styled(Card)`
+  background-color: ${(props) => props.theme.colors.bg.primary};
+`;
+
+const MuseumCardCover = styled(Card.Cover)`
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.primary};
+`;
+
+const Title = styled(Text)`
+  padding: ${(props) => props.theme.space[3]};
+  color: ${(props) => props.theme.colors.ui.primary};
+`;
+
+export const MuseumInfoCard = ({ museum = {} }) => {
   const {
     name = "Dodo Museum",
     icon,
@@ -17,15 +31,9 @@ export const MuseumInfo = ({ museum = {} }) => {
   } = museum;
 
   return (
-    <Card elevation={5} style={styles.card}>
-      <Card.Cover key={name} style={styles.cover} source={{ uri: photos[0] }} />
-      <Text style={styles.title}>{name}</Text>
-    </Card>
+    <MuseumCard elevation={5}>
+      <MuseumCardCover key={name} source={{ uri: photos[0] }} />
+      <Title>{name}</Title>
+    </MuseumCard>
   );
 };
-
-const styles = StyleSheet.create({
-  card: { backgroundColor: "white" },
-  cover: { padding: 20, backgroundColor: "white" },
-  title: { padding: 16 },
-});
