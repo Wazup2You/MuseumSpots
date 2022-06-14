@@ -6,6 +6,7 @@ import { Text } from "../../../components/typography/text.component";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 
+// Styling informatiekaartje
 import {
   MuseumCard,
   MuseumCardCover,
@@ -18,6 +19,7 @@ import {
 } from "./museum-info-card.styles";
 
 export const MuseumInfoCard = ({ museum = {} }) => {
+  // Informatiekaartje dummydata van museum
   const {
     name = "Dodo Museum",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",

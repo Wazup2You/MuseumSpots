@@ -18,8 +18,10 @@ const MuseumList = styled(FlatList).attrs({
 })``;
 
 export const MuseumsScreen = () => (
+  //Inhoud weergeven van Searchbar binnen de Safe Area View van de iPhone
   <SafeArea>
     <SearchContainer>
+      {/* Zoekbalk */}
       <Searchbar />
     </SearchContainer>
     <MuseumList

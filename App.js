@@ -16,14 +16,18 @@ import { theme } from "./src/infrastructure/theme";
 import { MuseumsScreen } from "./src/features/museums/screens/museums.screens"; 
 import { SafeArea } from "./src/components/utility/safe-area.component";
 
+// Core function creeërt tabs 
 const Tab = createBottomTabNavigator();
 
 const Settings = () => (
-  <SafeArea>
+  //Inhoud weergeven van Settings binnen de Safe Area View van de iPhone
+  <SafeArea> 
     <Text>Settings</Text>
   </SafeArea>
 );
+
 const Map = () => (
+  //Inhoud weergeven van Map binnen de Safe Area View van de iPhone
   <SafeArea>
     <Text>Map</Text>
   </SafeArea>
@@ -45,9 +49,11 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
+        {/* Navigatie */}
         <NavigationContainer>
           <Tab.Navigator
             screenOptions={({ route }) => ({
+              // Tab Icons
               tabBarIcon: ({ color, size }) => {
                 let iconName;
 
@@ -68,8 +74,11 @@ export default function App() {
               inactiveTintColor: "gray",
             }}
           >
-            <Tab.Screen name="Museums" component={MuseumsScreen} />
+            {/* Tab naar Landing component MuseumsScreen */}
+            <Tab.Screen name="Museums" component={MuseumsScreen} /> 
+            {/* Tab naar component Map */}
             <Tab.Screen name="Map" component={Map} />
+            {/* Tab naar component Settings */}
             <Tab.Screen name="Settings" component={Settings} />
           </Tab.Navigator>
         </NavigationContainer>
