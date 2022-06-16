@@ -51,7 +51,7 @@ export const MuseumInfoCard = ({ museum = {} }) => {
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>
             <Spacer position="left" size="large">
-              <Icon source={{ uri: icon }} />
+              {/* <Icon source={{ uri: icon }} /> */}
             </Spacer>
           </SectionEnd>
         </Section>

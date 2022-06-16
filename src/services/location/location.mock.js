@@ -21,6 +21,28 @@ export const locations = {
         },
       ],
     },
+    rotterdam: {
+      results: [
+        {
+          geometry: {
+            location: {
+              lng: 4.4851307,
+              lat: 51.9176555,
+            },
+            viewport: {
+              northeast: {
+                lat: 51.91274083610527,
+                lng: 4.501033947499904,
+              },
+              southwest: {
+                lat: 51.91000609776719,
+                lng: 4.498285326309991,
+              },
+            },
+          },
+        },
+      ],
+    },
     "san francisco": {
       results: [
         {
