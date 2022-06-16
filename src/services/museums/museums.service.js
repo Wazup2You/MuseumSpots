@@ -1,7 +1,7 @@
-import { mocks, mockImages } from "./mock";
+import { mocks, mockImages } from "../../features/museums/mock";
 import camelize from "camelize";
 
-export const museumsRequest = (location = "37.7749295,-122.4194155") => {
+export const museumsRequest = (location) => {
   return new Promise((resolve, reject) => {
     const mock = mocks[location];
     if (!mock) {
@@ -19,6 +19,7 @@ export const museumsTransform = ({ results = [] }) => {
 
     return {
       ...museum,
+      address: museum.vicinity,
       isOpenNow: museum.opening_hours && museum.opening_hours.open_now,
       isClosedTemporarily: museum.business_status === "CLOSED_TEMPORARILY",
     };

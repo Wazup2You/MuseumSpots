@@ -1,9 +1,17 @@
-import React, { useState, createContext, useEffect, useMemo } from "react";
+import React, {
+  useState,
+  useContext,
+  createContext,
+  useEffect,
+  useMemo,
+} from "react";
 
 import {
   museumsRequest,
   museumsTransform,
 } from "./museums.service";
+
+import { LocationContext } from "../location/location.context";
 
 export const MuseumsContext = createContext();
 
@@ -11,11 +19,14 @@ export const MuseumsContextProvider = ({ children }) => {
   const [museums, setMuseums] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { location } = useContext(LocationContext);
 
-  const retrieveMuseums = () => {
+  const retrieveMuseums = (loc) => {
     setIsLoading(true);
+    setMuseums([]);
+
     setTimeout(() => {
-      museumsRequest()
+      museumsRequest(loc)
         .then(museumsTransform)
         .then((results) => {
           setIsLoading(false);
@@ -28,8 +39,11 @@ export const MuseumsContextProvider = ({ children }) => {
     }, 2000);
   };
   useEffect(() => {
-    retrieveMuseums();
-  }, []);
+    if (location) {
+      const locationString = `${location.lat},${location.lng}`;
+      retrieveMuseums(locationString);
+    }
+  }, [location]);
 
   return (
     <MuseumsContext.Provider

@@ -15,7 +15,8 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { theme } from "./src/infrastructure/theme";
 import { MuseumsScreen } from "./src/features/museums/screens/museums.screens"; 
 import { SafeArea } from "./src/components/utility/safe-area.component";
-import { MuseumsContextProvider } from "./src/features/museums/museums.context";
+import { MuseumsContextProvider } from "./src/services/museums/museums.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
 // Core function creeërt tabs 
 const Tab = createBottomTabNavigator();
@@ -66,25 +67,27 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <MuseumsContextProvider>
-          {/* Navigatie */}
-          <NavigationContainer>
-            <Tab.Navigator
-              screenOptions={createScreenOptions}
-              tabBarOptions={{
-                activeTintColor: "tomato",
-                inactiveTintColor: "gray",
-              }}
-          >
-              {/* Tab naar Landing component MuseumsScreen */}
-              <Tab.Screen name="Museums" component={MuseumsScreen} /> 
-              {/* Tab naar component Map */}
-              <Tab.Screen name="Map" component={Map} />
-              {/* Tab naar component Settings */}
-              <Tab.Screen name="Settings" component={Settings} />
-            </Tab.Navigator>
-          </NavigationContainer>        
-        </MuseumsContextProvider>
+        <LocationContextProvider>
+          <MuseumsContextProvider>
+            {/* Navigatie */}
+            <NavigationContainer>
+              <Tab.Navigator
+                screenOptions={createScreenOptions}
+                tabBarOptions={{
+                  activeTintColor: "tomato",
+                  inactiveTintColor: "gray",
+                }}
+            >
+                {/* Tab naar Landing component MuseumsScreen */}
+                <Tab.Screen name="Museums" component={MuseumsScreen} /> 
+                {/* Tab naar component Map */}
+                <Tab.Screen name="Map" component={Map} />
+                {/* Tab naar component Settings */}
+                <Tab.Screen name="Settings" component={Settings} />
+              </Tab.Navigator>
+            </NavigationContainer>        
+          </MuseumsContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
