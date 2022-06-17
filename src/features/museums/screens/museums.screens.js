@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FlatList } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
@@ -25,7 +25,7 @@ const LoadingContainer = styled.View`
   left: 50%;
 `;
 
-  export const MuseumsScreen = () => {
+  export const MuseumsScreen = ({ navigation}) => {
     const { isLoading, error, museums } = useContext(MuseumsContext);
 
   console.log(error);
@@ -43,9 +43,15 @@ const LoadingContainer = styled.View`
         data={museums}
         renderItem={({ item }) => {
           return (
-            <Spacer position="bottom" size="large">
-              <MuseumInfoCard museum={item} />
-            </Spacer>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("MuseumDetail", { museum: item })
+              }
+            >
+              <Spacer position="bottom" size="large">
+                <MuseumInfoCard museum={item} />
+              </Spacer>
+            </TouchableOpacity>
           );
         }}
         keyExtractor={(item) => item.name}
