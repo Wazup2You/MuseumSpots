@@ -26,9 +26,8 @@ const LoadingContainer = styled.View`
 `;
 
   export const MuseumsScreen = ({ navigation}) => {
-    const { isLoading, error, museums } = useContext(MuseumsContext);
+    const { isLoading, museums } = useContext(MuseumsContext);
 
-  console.log(error);
   return (
      //Inhoud weergeven van Searchbar binnen de Safe Area View van de iPhone
     <SafeArea>
