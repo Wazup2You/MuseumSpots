@@ -12,8 +12,7 @@ const MuseumStack = createStackNavigator();
 export const MuseumsNavigator = () => {
   return (
     <MuseumStack.Navigator
-      headerMode="none"
-      screenOptions={{ ...TransitionPresets.ModalPresentationIOS }}
+      screenOptions={{ ...TransitionPresets.ModalPresentationIOS, headerShown: false}}
     >
       <MuseumStack.Screen
         name="Museums"
