@@ -13,7 +13,7 @@ const Map = styled(MapView)`
   width: 100%;
 `;
 
-export const MapScreen = () => {
+export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { museums = [] } = useContext(MuseumsContext);
 
@@ -49,7 +49,11 @@ export const MapScreen = () => {
                 longitude: museum.geometry.location.lng,
               }}
             >
-              <MapView.Callout>
+              <MapView.Callout onPress={() => navigation.navigate("MuseumDetail", { 
+                museum,
+              })
+            }
+              >
                 <MapCallout museum={museum} />
               </MapView.Callout>
             </MapView.Marker>
