@@ -9,6 +9,7 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { Search } from "../components/search.component";
 import { MuseumsContext } from "../../../services/museums/museums.context";
 
+
 const MuseumList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,

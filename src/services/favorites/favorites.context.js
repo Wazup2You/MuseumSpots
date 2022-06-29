@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react"
-import { Item } from "react-native-paper/lib/typescript/components/List/List";
 
 export const FavoritesContext = createContext();
 
@@ -12,7 +11,7 @@ export const FavoritesContextProvider = ({ children }) => {
 
     const remove = (museum) => {
         const newFavorites = favorites.filter(
-            (x) => x.placeId !== Item.placeId
+            (x) => x.placeId !== museum.placeId
             );
 
         setFavorites(newFavorites);
